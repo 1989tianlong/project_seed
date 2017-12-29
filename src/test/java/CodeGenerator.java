@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static com.company.project.core.ProjectConstant.*;
+import static com.arch.power.core.Constant.*;
 
 /**
  * 代码生成器，根据数据表名称生成对应的Model、Mapper、Service、Controller简化开发。
@@ -35,7 +35,7 @@ public class CodeGenerator {
     private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());//@date
 
     public static void main(String[] args) {
-        genCode("输入表名");
+        genCode("user");
     }
 
     public static void genCode(String... tableNames) {
