@@ -129,6 +129,8 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 				.addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
 
+
+
 	private void responseResult(HttpServletResponse response, Result result) {
 		response.setCharacterEncoding("UTF-8");
 		response.setHeader("Content-type", "application/json;charset=UTF-8");
