@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -117,6 +118,15 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 				return new ModelAndView();
 			}
 		});
+	}
+
+	// Spring Boot自动配置本身不会自动把/swagger-ui.html这个路径映射到对应的目录META-INF/resources/下面
+	@Override public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("swagger-ui.html")
+				.addResourceLocations("classpath:/META-INF/resources/");
+
+		registry.addResourceHandler("/webjars/**")
+				.addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
 
 	private void responseResult(HttpServletResponse response, Result result) {
